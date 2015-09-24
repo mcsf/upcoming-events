@@ -1,0 +1,37 @@
+.mcsf-events {
+	max-width: 800px;
+	margin: auto;
+}
+
+.mcsf-events .month {
+	clear: both;
+	padding: 10px 0;
+}
+
+.mcsf-events .month header {
+	float: left;
+	font-size: 2em;
+	line-height: 1;
+}
+
+.mcsf-events .month .days {
+	margin-left: 4em;
+}
+
+.mcsf-events .event-date,
+.mcsf-events .event-title {
+	font-size: 1.3em;
+}
+
+.mcsf-events .event-location {
+	margin-right: 2px;
+}
+
+.mcsf-events .event-location .fa-map-marker {
+	margin-left: 2px;
+}
+
+.mcsf-events .event-time {
+	margin-left: 10px;
+	margin-right: 2px;
+}
