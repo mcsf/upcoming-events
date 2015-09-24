@@ -1,6 +1,6 @@
 # Usage
 
-As a shortcode,
+As a WordPress shortcode,
 
 	[mcsf_events calendar="CALENDAR" key="API_KEY" class="OPTIONAL_CLASSES"]
 
@@ -15,4 +15,6 @@ events.
 
 # Wat
 
-Yes, this is terse.
+Yes, this is terse. Here, have a picture:
+
+![screenshot](https://raw.github.com/mcsf/upcoming-events/master/screenshot.png)
