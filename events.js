@@ -25,7 +25,8 @@
 			};
 
 		return function(data) {
-			compiled = compiled || _.template($('#tmpl-' + id).html(), null, options);
+			var templateHtml = document.getElementById('tmpl-' + id).innerHTML;
+			compiled = compiled || _.template(templateHtml, null, options);
 			return compiled(data);
 		};
 	});
@@ -40,7 +41,7 @@
 			now = new Date().toISOString(),
 			then = new Date(Date.now() + 2 * MONTH_IN_MS).toISOString();
 
-		$.get(getCalendarUrl(calendar), {
+		$.getJSON(getCalendarUrl(calendar), {
 			singleEvents: true,
 			orderBy: 'startTime',
 			timeMin: now,
@@ -151,10 +152,11 @@
 	function drawEvents(container, data) {
 		var compiled = template('month');
 
-		container.empty();
+		container.innerHTML = '';
 		data.months.forEach(function(event) {
 			var element = $(compiled(event));
-			container.append(element);
+			element = element.length ? element[0] : element;
+			container.appendChild(element);
 		});
 	}
 
@@ -177,10 +179,11 @@
 
 	$(function() {
 		// Supports multiple calendars in the same page
-		$('.mcsf-events').each(function() {
-			var container = $(this),
-				calendar = container.data('calendar');
-				key = container.data('apiKey');
+		var containers = [].slice.call(document.querySelectorAll('.mcsf-events'));
+
+		containers.forEach(function(container) {
+			var calendar = container.dataset.calendar,
+				key = container.dataset.apiKey;
 
 			if (!calendar || !key) {
 				throw new Error('URL or API key missing. Please check your [mcsf_events] shortcodes.');
@@ -188,7 +191,7 @@
 
 			fetchEvents(calendar, key, function(data) {
 				var hook = makeFilterHook(data, container);
-				container.data('filterHook', hook);
+				container.dataset.filterHook = hook;
 				processEvents(data);
 				drawEvents(container, data);
 			});
