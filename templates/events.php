@@ -11,24 +11,24 @@
 					<# if (event.location) { #>
 						<span class="event-location">
 							@ {{ event.shortLocation }}
-							<a class="fa fa-map-marker" target="_blank" href="{{ event.mapUrl }}"></a>
+							<a class="icon icon-map-marker" target="_blank" href="{{ event.mapUrl }}"></a>
 						</span>
 					<# } #>
 
 					<# if (event.link) { #>
-						<# event.linkClass = event.isLinkFacebook ? 'fa-facebook' : 'fa-external-link'; #>
-						<a target="_blank" class="event-link fa {{ event.linkClass }}" href="{{ event.link }}"></a>
+						<# event.linkClass = event.isLinkFacebook ? 'icon-facebook' : 'icon-external-link'; #>
+						<a target="_blank" class="event-link icon {{ event.linkClass }}" href="{{ event.link }}"></a>
 					<# } #>
 
 					<# if (event.hour) { #>
 						<span class="event-time">
-							<span class="fa fa-clock-o"></span> {{ event.hour }}
+							<span class="icon icon-clock-o"></span> {{ event.hour }}
 						</span>
 					<# } #>
 
 					<# if (event.fee) { #>
 						<span class="event-fee">
-							<span class="fa fa-euro"></span> {{ event.fee }}
+							<span class="icon icon-euro"></span> {{ event.fee }}
 						</span>
 					<# } #>
 
